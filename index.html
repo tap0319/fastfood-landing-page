@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FastFood Super Express</title>
+  <link rel="icon" href="images/favicon.ico" type="images/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style2.css"
+  </script> src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>FastFood Super Express</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Menu</a>
+      <a href="#order"><button>Order Now</button></a>
+
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Your Favorite Meals, Delivered Fast!</h2>
+    <p>Craving burgers, fries, or pizza? We've got it all — hot and fresh.</p>
+    <button>Order Now</button>
+  </section>
+
+  <section class="food-gallery">
+    <div class="food-card">
+      <img src="images/burger 1.jpg" alt="Cheesy Burger" loading="lazy"/>
+      <h3>Cheesy Burger</h3>
+      <p class="price">₱50.00 - 1 pc</p>
+    </div>
+    <div class="food-card">
+      <img src="images/fries.jpg" alt="Crunchy Fries" />
+      <h3>Crunchy Fries</h3>
+      <p class="price">₱50.00 - 1 plate</p>
+    </div>
+    <div class="food-card">
+      <img src="images/pizza.jpg" alt="Hot Pizza" />
+      <h3>Hot Pizza</h3>
+      <p class="price">₱120.00 - 1 box</p>
+    </div>
+  </section>
+
+  <section class="carousel-section">
+    <h2>More to Delicious</h2>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="carousel-item">
+          <img src="images/nuggets.jpg" alt="Chicken Nuggets" />
+          <h3>Chicken Nuggets</h3>
+          <p class="price">₱50.00 - 20 pcs</p>
+        </div>
+        <div class="carousel-item">
+          <img src="images/hotdog_sandwich.jpg" alt="Cheesy Hotdog" />
+          <h3>Cheesy Hotdog</h3>
+          <p class="price">₱100.00 - Buy 1 Take 1</p>
+        </div>
+        <div class="carousel-item">
+          <img src="images/sundae.jpg" alt="Vanilla Sundae" />
+          <h3>Vanilla Sundae</h3>
+          <p class="price">₱45.00 - 1 pc</p>
+        </div>
+        <div class="carousel-item">
+          <img src="images/oreo-milkshake-one.jpg" alt="Chocolate Milkshake" />
+          <h3>Chocolate Milkshake</h3>
+          <p class="price">₱60.00 - 1 pc</p>
+        </div>
+        <div class="carousel-item">
+          <img src="images/siomai.jpg" alt="Siomai" />
+          <h3>Siomai</h3>
+          <p class="price">₱50.00 - 10 pcs</p>
+        </div>
+        <div class="carousel-item">
+          <img src="images/footlong.jpg" alt="Footlong Sandwich" />
+          <h3>Footlong Sandwich</h3>
+          <p class="price">₱150.00 - 2 pcs</p>
+        </div>
+        <div class="carousel-item">
+          <img src="images/halo-halo.jpg" alt="Halo-halo" />
+          <h3>Halo-halo</h3>
+          <p class="price">₱45.00 - 1 pc</p>
+        </div>
+      </div>
+      <button class="carousel-btn left" onclick="scrollCarousel(-1)" aria-label="Previous">&#10094;</button>
+      <button class="carousel-btn right" onclick="scrollCarousel(1)" aria-label="Next">&#10095;</button>
+
+    </div>
+  </section>
+
+  <script>
+    const carousel = document.querySelector('.carousel-track');
+    const items = Array.from(carousel.children);
+    const itemWidth = 270;
+    let scrollIndex = 0;
+
+    // Clone first and last items
+    items.forEach(item => {
+      carousel.appendChild(item.cloneNode(true));
+      carousel.insertBefore(item.cloneNode(true), carousel.firstChild);
+    });
+
+    const totalItems = carousel.children.length;
+    scrollIndex = items.length;
+
+    // Initial position
+    carousel.style.transform = `translateX(-${scrollIndex * itemWidth}px)`;
+
+    function scrollCarousel(direction) {
+      scrollIndex += direction;
+      carousel.style.transition = 'transform 0.5s ease';
+      carousel.style.transform = `translateX(-${scrollIndex * itemWidth}px)`;
+
+      carousel.addEventListener('transitionend', () => {
+        if (scrollIndex >= totalItems - items.length) {
+          scrollIndex = items.length;
+          carousel.style.transition = 'none';
+          carousel.style.transform = `translateX(-${scrollIndex * itemWidth}px)`;
+        } else if (scrollIndex < items.length) {
+          scrollIndex = totalItems - items.length * 2;
+          carousel.style.transition = 'none';
+          carousel.style.transform = `translateX(-${scrollIndex * itemWidth}px)`;
+        }
+      }, { once: true });
+    }
+  </script>
+
+ 
+ <!--footer-->
+
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <h2>FastFood Super Express</h2>
+    <p>Serving hot meals fast & fresh. Enjoy Order now and satisfy your cravings!</p>
+    <ul class="social-icons">
+      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+    <p class="copyright">© 2025 FastFood Super Express. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<!-- Order Section -->
+<section id="order" class="order-section">
+  <h2>Place Your Order</h2>
+  <p>Fill out the form below to order your favorite fast food treats!</p>
+  <div class="order-form-container">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSd3Vjq7NrIe6knrzu7TZR3VOMBMAT4CuROTwshZi92CRAv-5g/viewform?embedded=true" 
+      width="100%" 
+      height="1200" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0">
+      Loading…
+    </iframe>
+  </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
